@@ -1,0 +1,55 @@
+﻿@using MyWineStore.Models
+@model CheckOutModel
+@{
+    ViewBag.Title = "Checkout";
+    List<SelectListItem>
+months = new List<SelectListItem>
+    ();
+    for (int i = 1; i <= 12; i++)
+    {
+        months.Add(new SelectListItem { Text = i.ToString().PadLeft(2, '0'), Value = i.ToString() });
+    }
+}
+@using (Html.BeginForm())
+{
+    <h1>Checkout:</h1>
+    // add div for each one!
+    <h2>Contact Info:</h2>
+<div class="form-group">
+    @Html.LabelFor(m => m.FirstName)
+    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.LastName)
+    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.EmailAddress)
+    @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.EmailAddress)
+</div>
+ <div class="form-group">
+    @Html.LabelFor(m => m.PhoneNumber)
+    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+</div>
+
+    <h2>Payment  and Billing Info</h2> 
+<div class="form-group">
+    @Html.LabelFor(m => m.CreditCardNumber)
+    @Html.TextBoxFor(m => m.CreditCardNumber, new { @class = "form-control" })
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.CreditCardName)
+    @Html.TextBoxFor(m => m.CreditCardName, new { @class = "form-control" })
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.CreditCardVerificationValue)
+    @Html.TextBoxFor(m => m.CreditCardVerificationValue, new { @class = "form-control" })
+    @Html.TextBoxFor(m => m.CreditCardExpirationDate)
+</div>
+    <h2>Shipping Info</h2>
+   
+<input type="submit" value="Submit Order" class="btn  btn-primary" />
+
+
+}
